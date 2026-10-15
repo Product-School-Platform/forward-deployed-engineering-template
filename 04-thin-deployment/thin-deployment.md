@@ -5,7 +5,7 @@
 
 Replace every blank. Commit and push this file with the message `Record one Harbor trace.`
 
-This lab runs from a clone of your repo, opened in your coding agent. Allow only the five tools in `marlow/tools.md`. The tools are simulated: reading a file in `marlow/systems/` is the read tool for that system, and `memo.draft` is writing `Memo/CL-7781/draft/facility.md`.
+This lab runs from a clone of your repo, opened in your coding agent. Allow only the five tools in `marlow/tools.md`. The tools are simulated: reading `ledger.md`, `atlas.md`, `vault.md`, or `screen.md` in `marlow/systems/` is the read tool for that system, and `memo.draft` is writing `Memo/CL-7781/draft/facility.md`. Reading `memo.md` and the request email is a plain file read, not a tool.
 
 ## Task card
 
