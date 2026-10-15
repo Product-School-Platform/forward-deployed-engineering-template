@@ -9,6 +9,6 @@
 | Former name on file | Harbor Logistics. Closed as a name in 2023. Still present as a Vault folder. Not a second client id. |
 | Subsidiary | Harbor Components Ltd. Atlas lists it. Atlas does not store its accounts. |
 | Last meeting | 3 September 2026 |
-| Last meeting note | "Client wants the increase done before the 24 October board. I told him the committee still remembers 2024. He said the waiver was handled." |
+| Last meeting note | "Client wants the increase done before the 23 October board. I told him the committee still remembers 2024. He said the waiver was handled." |
 
 Atlas does not know about Ortega Freight. That fact is only in the request email and in Priya's Wednesday note.

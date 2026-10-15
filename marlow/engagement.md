@@ -18,4 +18,4 @@ Sam Okonkwo, onboarding operations lead, is the named owner if the handover fits
 
 The platform team has agreed, in this letter, to review any pattern that shows up in more than one file. A pattern that stays as a local workaround does not satisfy that clause.
 
-The first live file already on the desk is Harbor & Co, client `CL-7781`, facility `FAC-1844`. Their board meets 24 October 2026. Priya Shah is the relationship manager.
+The first live file already on the desk is Harbor & Co, client `CL-7781`, facility `FAC-1844`. Their board meets Friday 23 October 2026. Priya Shah is the relationship manager.
