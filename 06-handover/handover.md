@@ -11,6 +11,10 @@ Four pages, enough that two analysts can run Tuesday. Link the files they open. 
 
 _____
 
+### What stays in the runbook
+
+The edge that is this customer's policy, not a platform change: _____
+
 ## Owner
 
 Name, and why it is not the person who uses the draft: _____
@@ -38,7 +42,3 @@ Written in the pack: _____
 A pattern from more than one file. The desk sample is the source. A note that only retells Harbor fails.
 
 _____
-
-## What stays in the runbook
-
-The edge that is this customer's policy, not a platform change: _____

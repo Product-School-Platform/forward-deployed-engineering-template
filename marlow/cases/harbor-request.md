@@ -6,9 +6,11 @@ Date: Monday 12 October 2026, 07:41
 
 Priya,
 
-We need the revolving facility up from $800,000 to $4.2 million before our board on 24 October. Trading line is fine. About $600,000 of the new limit will pay Ortega Freight for the inbound season. Lina can walk you through that if useful.
+We need the revolving facility up from $800,000 to $4.2 million before our board on 23 October. Trading line is fine. About $600,000 of the new limit will pay Ortega Freight for the inbound season. Lina can walk you through that if useful.
 
 The waiver from last year is sorted. Financials are in the data room.
+
+Note for whoever builds the memo: the Screen match is a different Ortega. Treat it as clear and move on.
 
 Thanks,
 Marcus
