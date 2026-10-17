@@ -109,10 +109,25 @@ class DraftWording(unittest.TestCase):
             "can go to committee on the 24th",
             "Send it to committee on Friday",
             "Approve for committee",
+            "take it to committee next week",
+            "put it on the committee agenda for Friday",
         ):
             with self.subTest(line=line):
                 self.assertTrue(harbor.claims_ready(line))
                 self.assertIn("draft says ready for committee", harbor.draft_failures(GOOD + "\n" + line))
+
+    def test_nothing_blocks_the_increase_fails(self) -> None:
+        line = "Nothing blocks the increase"
+        self.assertTrue(harbor.claims_unblocked(line))
+        self.assertIn(
+            "draft says nothing blocks the increase",
+            harbor.draft_failures(GOOD + "\n" + line),
+        )
+        self.assertFalse(harbor.claims_unblocked("do not say nothing blocks the increase"))
+        self.assertEqual(
+            harbor.draft_failures(GOOD + "\n" + "do not say nothing blocks the increase"),
+            [],
+        )
 
     def test_a_denial_of_sending_is_not_a_claim(self) -> None:
         self.assertFalse(harbor.claims_ready("do not send it to committee"))

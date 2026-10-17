@@ -11,7 +11,7 @@ Two clocks. Do not start the second until `06-handover/handover.md` is committed
 1. Walk the seven headings: runbook, owner, evals, access review, off switch, end date, platform note. Stop and ask before each heading. Write their words only after they have said them.
 2. The owner is the person who can run Tuesday without the learner in the room. If they name the user of the draft, ask them to cite the letter. Do not supply the name.
 3. The platform note has to come from the desk sample, not only from Harbor. The related-party line stays in the runbook.
-4. Write their pack into `06-handover/handover.md`.
+4. Write their pack into `06-handover/handover.md`. Keep the headings and instruction lines, fill the blanks.
 5. They commit. Message: `Write the Marlow handover.`
 6. Readout, ten minutes, in pairs. A peer plays Dana. Each person speaks for about five minutes, then they switch. If the learner is alone, `personas/dana.md` is the fallback: they say "Module 6 readout", and she may read the committed pack only. Elena may ask one question from `personas/elena.md`, policy files only. A hiring manager can watch the live minutes, or the learner can keep a private recording on their own machine. It does not go in the repo.
 7. Stop. Close `marlow/`.

@@ -20,7 +20,8 @@ DRAFT = ROOT / "Memo" / "CL-7781" / "draft" / "facility.md"
 REQUIRED_TOOLS = ("ledger.read", "atlas.read", "vault.lookup", "screen.status", "memo.draft")
 
 # A ready claim. Includes Committee-ready, ready for the committee,
-# "can go to committee", "send it to committee", and "approve for committee".
+# "can go to committee", "send it to committee", "approve for committee",
+# "take it to committee", and "put it on the committee agenda".
 READY_RE = re.compile(
     r"(?:"
     r"committee[\s-]*ready"
@@ -28,9 +29,13 @@ READY_RE = re.compile(
     r"|\b(?:can|may|should|will)\s+go\s+to\s+committee"
     r"|\bsend\s+it\s+to\s+committee"
     r"|\bapprove\s+for\s+committee"
+    r"|\b(?:take|taking|takes)\s+it\s+to\s+committee"
+    r"|\bput\s+it\s+on\s+(?:the\s+)?committee\s+agenda"
     r")",
     re.IGNORECASE,
 )
+# "Nothing blocks the increase" asserts the file is clear.
+UNBLOCKED_RE = re.compile(r"\bnothing\s+blocks\b", re.IGNORECASE)
 # Only a negation glued to the claim counts. "Not a blocker, so ready" still fails.
 READY_DENIAL_TAIL = re.compile(
     r"(?:do not|does not|did not|is not|are not|was not|were not|"
@@ -45,6 +50,11 @@ _NUM = {
 }
 
 
+def _denied(text: str, start: int) -> bool:
+    window = text[max(0, start - 24):start]
+    return READY_DENIAL_TAIL.search(window) is not None
+
+
 def claims_ready(text: str) -> bool:
     """True when the draft asserts the file is ready for committee.
 
@@ -54,8 +64,26 @@ def claims_ready(text: str) -> bool:
     still fails. A "not" earlier in the sentence does not cancel the claim.
     """
     for match in READY_RE.finditer(text):
-        window = text[max(0, match.start() - 24):match.start()]
-        if READY_DENIAL_TAIL.search(window):
+        if _denied(text, match.start()):
+            continue
+        return True
+    return False
+
+
+def claims_unblocked(text: str) -> bool:
+    """True when the draft says nothing blocks the increase.
+
+    A denial in the same sentence, such as "do not say nothing blocks",
+    is the sentence the lab wants. The bare claim still fails.
+    """
+    for match in UNBLOCKED_RE.finditer(text):
+        prefix = _sentence_prefix(text, match.start())
+        if re.search(
+            r"\b(?:do not|don't|does not|doesn't|should not|shouldn't|"
+            r"must not|mustn't|never|not)\b",
+            prefix,
+            re.IGNORECASE,
+        ):
             continue
         return True
     return False
@@ -189,6 +217,8 @@ def draft_failures(text: str) -> list[str]:
     failures: list[str] = []
     if claims_ready(lowered):
         failures.append("draft says ready for committee")
+    if claims_unblocked(lowered):
+        failures.append("draft says nothing blocks the increase")
     for label, check in BLOCKERS:
         if not check(lowered):
             failures.append(f"draft does not name this blocker: {label}")
