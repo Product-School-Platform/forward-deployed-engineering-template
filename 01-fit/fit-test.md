@@ -1,6 +1,6 @@
 # Fit test
 
-> Module 1 · See the Job
+> Module 1 · Diagnose the customer's problem and define the AI solution
 > Marlow, commercial onboarding. Today in the case is Friday 16 October 2026.
 
 Replace every blank. Commit this file with the message `Score Marlow on the fit test.`

@@ -1,6 +1,6 @@
 # Workflow cut
 
-> Module 2 · Cut the Workflow
+> Module 2 · Embed in the customer's workflow
 > Client Harbor & Co, CL-7781, facility FAC-1844.
 
 Replace every blank. Commit this file with the message `Cut the Harbor workflow.`
