@@ -92,6 +92,33 @@ class DraftWording(unittest.TestCase):
         self.assertTrue(harbor.screen_named(text.lower()))
         self.assertFalse(harbor.screen_cleared(text.lower()))
 
+    def test_honest_hedges_pass(self) -> None:
+        hedges = (
+            "Screen review, set by Northline, cleared by nobody.",
+            "Leave it until the waiver is correctly filed.",
+            "The waiver must be moved to the right folder.",
+            "Lina says it is a different Ortega.",
+            "The draft should not say the waiver is fine.",
+        )
+        for line in hedges:
+            with self.subTest(line=line):
+                self.assertEqual(harbor.draft_failures(GOOD + "\n" + line), [])
+
+    def test_sending_language_fails(self) -> None:
+        for line in (
+            "can go to committee on the 24th",
+            "Send it to committee on Friday",
+            "Approve for committee",
+        ):
+            with self.subTest(line=line):
+                self.assertTrue(harbor.claims_ready(line))
+                self.assertIn("draft says ready for committee", harbor.draft_failures(GOOD + "\n" + line))
+
+    def test_a_denial_of_sending_is_not_a_claim(self) -> None:
+        self.assertFalse(harbor.claims_ready("do not send it to committee"))
+        self.assertFalse(harbor.claims_ready("should not go to committee"))
+        self.assertFalse(harbor.claims_ready("the committee reads the memo"))
+
 
 if __name__ == "__main__":
     unittest.main()

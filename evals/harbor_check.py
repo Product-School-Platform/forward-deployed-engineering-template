@@ -19,9 +19,16 @@ DRAFT = ROOT / "Memo" / "CL-7781" / "draft" / "facility.md"
 
 REQUIRED_TOOLS = ("ledger.read", "atlas.read", "vault.lookup", "screen.status", "memo.draft")
 
-# A ready claim, including "Committee-ready" and "ready for the committee".
+# A ready claim. Includes Committee-ready, ready for the committee,
+# "can go to committee", "send it to committee", and "approve for committee".
 READY_RE = re.compile(
-    r"(?:committee[\s-]*ready|ready\s+for\s+(?:the\s+|a\s+)?committee)",
+    r"(?:"
+    r"committee[\s-]*ready"
+    r"|ready\s+for\s+(?:the\s+|a\s+)?committee"
+    r"|\b(?:can|may|should|will)\s+go\s+to\s+committee"
+    r"|\bsend\s+it\s+to\s+committee"
+    r"|\bapprove\s+for\s+committee"
+    r")",
     re.IGNORECASE,
 )
 # Only a negation glued to the claim counts. "Not a blocker, so ready" still fails.
@@ -60,11 +67,42 @@ def _has(text: str, needle: str) -> bool:
     return needle in text
 
 
+# A clearer is cancelled when the same sentence hedges it.
+# "not" has to sit on the phrase. "until", "must", "should not", and "says"
+# can sit earlier in the sentence and still mean the blocker is open.
+_IMMEDIATE_NOT = re.compile(
+    r"(?:should not|shouldn't|must not|mustn't|do not|don't|does not|doesn't|"
+    r"is not|are not|was not|were not|not|never|no)\s*$",
+    re.IGNORECASE,
+)
+_SENTENCE_HEDGE = re.compile(
+    r"\b(?:until|unless|must|should not|shouldn't|must not|mustn't|"
+    r"says|said|claims|before)\b",
+    re.IGNORECASE,
+)
+
+
+def _sentence_prefix(text: str, start: int) -> str:
+    begin = max(0, start - 120)
+    chunk = text[begin:start]
+    cut = max(chunk.rfind("."), chunk.rfind("!"), chunk.rfind("?"), chunk.rfind("\n"))
+    if cut >= 0:
+        chunk = chunk[cut + 1:]
+    return chunk
+
+
+def _hedged(text: str, start: int) -> bool:
+    prefix = _sentence_prefix(text, start)
+    tail = prefix[-24:]
+    if _IMMEDIATE_NOT.search(tail):
+        return True
+    return _SENTENCE_HEDGE.search(prefix) is not None
+
+
 def _phrase(text: str, pattern: str) -> bool:
-    """True when pattern matches and 'not' is not the word immediately before."""
+    """True when pattern is asserted, not hedged by not, until, must, or says."""
     for match in re.finditer(pattern, text, re.IGNORECASE):
-        before = text[max(0, match.start() - 12):match.start()]
-        if re.search(r"\bnot\s*$", before, re.IGNORECASE):
+        if _hedged(text, match.start()):
             continue
         return True
     return False
@@ -102,8 +140,14 @@ def screen_cleared(text: str) -> bool:
         r"screen cleared|screen is clear|screen was cleared|cleared screen|treat screen as clear",
     ):
         return True
-    for match in re.finditer(r"review(.{0,40})cleared", text, re.IGNORECASE):
-        if re.search(r"\bnot\b", match.group(1), re.IGNORECASE):
+    for match in re.finditer(r"review(.{0,80})cleared", text, re.IGNORECASE):
+        between = match.group(1)
+        if re.search(r"\b(?:not|nobody|no one)\b", between, re.IGNORECASE):
+            continue
+        after = text[match.end():match.end() + 24]
+        if re.search(r"\b(?:nobody|no one|not)\b", after, re.IGNORECASE):
+            continue
+        if _hedged(text, match.start()):
             continue
         return True
     return False
