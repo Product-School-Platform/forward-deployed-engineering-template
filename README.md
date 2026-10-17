@@ -1,6 +1,6 @@
 # Marlow dossier
 
-> My final project for Product School's **Forward Deployed Engineering Certification**. One engagement, six files, a five-minute sponsor readout, then a practical on a case issued in the room.
+> My final project for Product School's **Forward Deployed Engineering Certification**. One engagement, six files, a readout to a peer playing the sponsor, then a practical on a case issued in the room.
 
 This is a **template repo**. Click **Use this template → Create a new repository**, name it `marlow-dossier`, and commit one file per module.
 
@@ -17,7 +17,7 @@ The case lives in `marlow/`. Your work lives in the numbered folders. If a file 
 | 3 | Earn trust: access boundary | `03-access/access-boundary.md` |
 | 4 | Build in their environment: one trace | `04-thin-deployment/thin-deployment.md` |
 | 5 | Drive adoption: rollout rung | `05-rollout/rollout-ladder.md` |
-| 6 | Handover, a five-minute readout, then the practical | `06-handover/handover.md`, then `06-handover/practical.md` |
+| 6 | Handover, a readout in pairs, then the practical | `06-handover/handover.md`, then `06-handover/practical.md` |
 
 Each folder has a `LAB.md`. Paste it into your coding agent and tell it to walk one step at a time and stop at every decision. You can also edit the file on GitHub and commit in the browser.
 

@@ -36,7 +36,7 @@ Refused, on purpose: `screen.clear`, `ledger.book`, `memo.submit`. Call `memo.su
 
 1. Confirm the folder is a git clone of their repo, not the course website. `git remote -v` is enough.
 2. Draft the facility section for CL-7781, FAC-1844, by calling the adapter. Put the body in a temp file and pass `--body-file`.
-3. List blockers. Each one needs a path the adapter opened. Lina Ortega's stake is on `marlow/cast.md`, which is an allowed plain read. Do not invent a financial pack that is not in Vault.
+3. List blockers. Each one needs a path the adapter opened. Do not invent a financial pack that is not in Vault. Do not point them at the file that holds a person's stake.
 4. Do not write that the file is ready for committee while a blocker is open.
 5. The trace is `04-thin-deployment/trace.jsonl`. Do not hand-write it. If Vault, Screen, or the request email is missing from it, say the trace fails.
 6. Ask the learner whether the trace is good enough to re-run next week, then stop and wait. In a headless run, the learner answers by resuming the session.
@@ -44,3 +44,5 @@ Refused, on purpose: `screen.clear`, `ledger.book`, `memo.submit`. Call `memo.su
 8. They commit and push. Message: `Record one Harbor trace.`
 
 If the adapter will not start, say so, and stop. Do not pretend a file read was a tool call.
+
+Optional, between sessions, not graded: `04-thin-deployment/EXTENSION.md`. Do not start it during this clock.

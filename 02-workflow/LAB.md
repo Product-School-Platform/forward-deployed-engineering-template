@@ -2,6 +2,8 @@
 
 Walk the learner one step at a time. Stop and ask. Do not name the blockers for them. They have to find the disagreements by opening the files.
 
+Do not use em dashes or en dashes in anything you write. Use commas, colons, or full stops.
+
 1. The learner interviews Priya with `personas/priya.md` first. You do not play Priya, and you do not feed her the systems. Then start from `marlow/shadow/priya-week.md`.
 2. Have them open Ledger for FAC-1844, Atlas, Vault, Screen, Memo, both policies, and `marlow/cases/harbor-request.md`.
 3. Ask which step they mark keep, which they delete, and which stays with a named human. A mark of "draft the whole memo" is not a cut.
