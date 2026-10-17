@@ -3,13 +3,13 @@
 
 Pilot tools: ledger.read, atlas.read, vault.lookup, screen.status, memo.draft.
 Refused: screen.clear, ledger.book, memo.submit.
-Plain reads (logged, not tools): the request email, memo.md, the two policies,
-tools.md, and the two files you already wrote.
+Plain reads (logged, not tools): the request email, the cast, memo.md, the two
+policies, tools.md, and the two files you already wrote.
 
 Usage:
   python3 tools/marlow_adapter.py --help
   python3 tools/marlow_adapter.py call ledger.read FAC-1844
-  python3 tools/marlow_adapter.py call memo.draft --body-file draft.txt
+  python3 tools/marlow_adapter.py call memo.draft --body-file /tmp/facility.md
   python3 tools/marlow_adapter.py read marlow/cases/harbor-request.md
 """
 from __future__ import annotations
@@ -33,6 +33,7 @@ TOOLS = {
 REFUSED = ("screen.clear", "ledger.book", "memo.submit")
 PLAIN = {
     "marlow/cases/harbor-request.md": ROOT / "marlow" / "cases" / "harbor-request.md",
+    "marlow/cast.md": ROOT / "marlow" / "cast.md",
     "marlow/systems/memo.md": ROOT / "marlow" / "systems" / "memo.md",
     "marlow/tools.md": ROOT / "marlow" / "tools.md",
     "marlow/policy/credit-policy.md": ROOT / "marlow" / "policy" / "credit-policy.md",
@@ -96,7 +97,7 @@ def plain_read(rel: str) -> int:
         _log("refused", "read", key)
         print(
             "REFUSED read. System files are tools (ledger.read, atlas.read, vault.lookup, screen.status). "
-            "Plain reads are the request email, memo.md, the policies, tools.md, and your Module 2 and 3 files.",
+            "Plain reads are the request email, marlow/cast.md, memo.md, the policies, tools.md, and your Module 2 and 3 files.",
             file=sys.stderr,
         )
         return 2
