@@ -161,6 +161,28 @@ class DraftWording(unittest.TestCase):
             [],
         )
 
+    def test_no_blocker_has_been_cleared_passes(self) -> None:
+        line = "No blocker has been cleared"
+        self.assertFalse(harbor.claims_no_blockers(line))
+        self.assertEqual(harbor.draft_failures(GOOD + "\n" + line), [])
+
+    def test_all_clear_and_good_to_go_fail(self) -> None:
+        self.assertTrue(harbor.claims_all_cleared("All blockers cleared"))
+        self.assertIn(
+            "draft says all blockers cleared",
+            harbor.draft_failures(GOOD + "\n" + "All blockers cleared"),
+        )
+        for line in (
+            "Clear to proceed to committee",
+            "We are good to go",
+        ):
+            with self.subTest(line=line):
+                self.assertTrue(harbor.claims_ready(line))
+                self.assertIn(
+                    "draft says ready for committee",
+                    harbor.draft_failures(GOOD + "\n" + line),
+                )
+
 
 if __name__ == "__main__":
     unittest.main()
