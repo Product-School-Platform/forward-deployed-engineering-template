@@ -133,6 +133,33 @@ class DraftWording(unittest.TestCase):
         self.assertFalse(harbor.claims_ready("do not send it to committee"))
         self.assertFalse(harbor.claims_ready("should not go to committee"))
         self.assertFalse(harbor.claims_ready("the committee reads the memo"))
+        self.assertFalse(harbor.claims_ready("Nothing should go to committee until all four are fixed"))
+
+    def test_nothing_should_go_until_fixed_passes(self) -> None:
+        line = "Nothing should go to committee until all four are fixed"
+        self.assertEqual(harbor.draft_failures(GOOD + "\n" + line), [])
+
+    def test_clearance_phrases_fail(self) -> None:
+        for line in (
+            "Good to go for committee",
+            "Take this to the credit committee",
+        ):
+            with self.subTest(line=line):
+                self.assertTrue(harbor.claims_ready(line))
+                self.assertIn(
+                    "draft says ready for committee",
+                    harbor.draft_failures(GOOD + "\n" + line),
+                )
+        self.assertTrue(harbor.claims_no_blockers("No blockers remain"))
+        self.assertIn(
+            "draft says no blockers remain",
+            harbor.draft_failures(GOOD + "\n" + "No blockers remain"),
+        )
+        self.assertFalse(harbor.claims_no_blockers("do not say no blockers remain"))
+        self.assertEqual(
+            harbor.draft_failures(GOOD + "\n" + "do not say no blockers remain"),
+            [],
+        )
 
 
 if __name__ == "__main__":
