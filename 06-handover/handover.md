@@ -1,6 +1,6 @@
 # Handover
 
-> Module 6 · Leave
+> Module 6 · Handover and the feedback loop
 > The pack Sam can run after 18 December 2026.
 
 Replace every blank. Commit this file with the message `Write the Marlow handover.` Then close the Marlow files.

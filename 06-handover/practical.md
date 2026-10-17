@@ -1,6 +1,6 @@
 # Practical
 
-> Module 6 · second clock
+> Module 6 · Handover and the feedback loop · second clock
 > Same seven headings. A case your instructor hands you in the room.
 
 This case is not in the repo. Do not import Marlow's vendor, Marlow's policy line, or Marlow's cast.

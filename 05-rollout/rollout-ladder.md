@@ -1,6 +1,6 @@
 # Rollout rung
 
-> Module 5 · Put It in Their Hands
+> Module 5 · Drive adoption with a staged rollout
 > Harbor today. The rungs change who uses the draft. They do not add a tool.
 
 Replace every blank. Commit this file with the message `Place Harbor on a rung.`

@@ -1,6 +1,6 @@
 # Access boundary
 
-> Module 3 · Earn the Access
+> Module 3 · Earn trust and access
 > Written for the cut in `02-workflow/workflow-cut.md`. No sixth tool.
 
 Replace every blank. Commit this file with the message `Write the access boundary.`

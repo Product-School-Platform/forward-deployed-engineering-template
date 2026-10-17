@@ -1,11 +1,11 @@
 # Thin deployment
 
-> Module 4 · Ship the Thin System
+> Module 4 · Build and adapt the AI system in their environment
 > One step for Harbor & Co, CL-7781, facility FAC-1844. Memo is the record.
 
 Replace every blank. Commit and push this file with the message `Record one Harbor trace.`
 
-This lab runs from a clone of your repo, opened in your coding agent. Allow only the five tools in `marlow/tools.md`. The tools are simulated: reading `ledger.md`, `atlas.md`, `vault.md`, or `screen.md` in `marlow/systems/` is the read tool for that system, and `memo.draft` is writing `Memo/CL-7781/draft/facility.md`. Reading `memo.md` and the request email is a plain file read, not a tool.
+This lab runs from a clone of your repo. The five tools exist only as `python3 tools/marlow_adapter.py`. See `tools/PERMISSIONS.md`. The trace is `04-thin-deployment/trace.jsonl`, written by the adapter. `memo.draft` writes `Memo/CL-7781/draft/facility.md`. The request email is a plain read through the adapter, not a sixth tool. Run `python3 evals/harbor_check.py` before you fill the check below.
 
 ## Task card
 
