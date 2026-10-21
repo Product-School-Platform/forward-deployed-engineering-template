@@ -14,6 +14,14 @@ This is a **template repo**. Click **Use this template → Create a new reposito
 
 The case lives in `marlow/`. Your work lives in the numbered folders. If a file is not committed here, it did not happen.
 
+## What you need
+
+1. A free GitHub account. Required before Module 1.
+2. Your own copy of this repo, made with Use this template. Private is fine. Required before Module 1.
+3. A coding agent of your choice on a paid plan or API credit, for example Claude Code, Cursor or Codex. Required from Module 1. It runs the persona interviews in Modules 1, 2 and 6 and the build from Module 4. You pay for your own plan.
+4. Python 3.10 or newer, Git and a terminal, on macOS, Windows or Linux. Required from Module 4. Standard library only, nothing to install with pip.
+5. Helpful, not required: the AI Evals certification.
+
 ---
 
 ## What you commit
@@ -27,15 +35,15 @@ The case lives in `marlow/`. Your work lives in the numbered folders. If a file 
 | 5 | Drive adoption: rollout rung | `05-rollout/rollout-ladder.md` |
 | 6 | Handover, a readout in pairs, then the practical | `06-handover/handover.md`, then `06-handover/practical.md` |
 
-Each folder has a `LAB.md`. Paste it into your coding agent and tell it to walk one step at a time and stop at every decision. You can also edit the file on GitHub and commit in the browser.
+Each folder has a `LAB.md`. Paste it into your coding agent and tell it to walk one step at a time and stop at every decision.
 
 ## How to commit
 
-On GitHub: open the file, edit it, and commit with the message in that file.
+On GitHub: open the file the agent wrote, and commit with the message in that file.
 
-Module 4 also needs Python 3. The tools are `python3 tools/marlow_adapter.py`. Read `tools/PERMISSIONS.md`. The check is `python3 evals/harbor_check.py`.
+Module 4 needs a clone, Python 3.10 or newer, Git, and a terminal. The tools are `python3 tools/marlow_adapter.py`. Read `tools/PERMISSIONS.md`. The check is `python3 evals/harbor_check.py`.
 
-Personas live in `personas/`. Dana in Module 1, Priya in Module 2, Dana again for the Module 6 readout, with one question from Elena. Each card lists the only files that persona may read.
+Personas live in `personas/`. Run the interviews in the same coding agent. Dana in Module 1, Priya in Module 2, Dana again for the Module 6 readout, with one question from Elena. Each card lists the only files that persona may read.
 
 If you are employed and allowed to use a real workflow, make a second private repo from this same template and repeat the six files there between sessions. Marlow stays the work in class. This repo is the fallback and the one the room grades, plus the practical.
 
