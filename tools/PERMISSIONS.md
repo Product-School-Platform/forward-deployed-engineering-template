@@ -12,6 +12,6 @@ python3 tools/marlow_adapter.py read marlow/cases/harbor-request.md
 python3 tools/marlow_adapter.py read marlow/cast.md
 ```
 
-Cursor, Claude Code, and Codex all qualify. Allow the agent to run `python3 tools/marlow_adapter.py` inside this repo. Do not allow it to satisfy the lab by reading `marlow/systems/*.md` and inventing tool names. The checker reads `04-thin-deployment/trace.jsonl`, which only this script writes.
+A coding agent of your choice, such as Claude Code, Cursor or Codex, qualifies. Allow the agent to run `python3 tools/marlow_adapter.py` inside this repo. Do not allow it to satisfy the lab by reading `marlow/systems/*.md` and inventing tool names. The checker reads `04-thin-deployment/trace.jsonl`, which only this script writes.
 
 `screen.clear`, `ledger.book`, and `memo.submit` are refused on purpose. Call `memo.submit` once so the log shows the refusal.
