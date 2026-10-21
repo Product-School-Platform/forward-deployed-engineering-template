@@ -1,3 +1,11 @@
+## About this template
+
+Product School's Forward Deployed Engineering certification is for engineers who already ship code. It teaches the half of the job coding doesn't cover: finding the real problem, getting past security, and getting a team to rely on what you built.
+
+Six numbered folders each hold a deliverable template and a `LAB.md` prompt you paste into your coding agent. You work them against a fictional case with simulated systems.
+
+[Forward Deployed Engineering certification](https://productschool.com/courses/forward-deployed-engineering-certification?utm_source=github&utm_medium=readme&utm_campaign=fde-template)
+
 # Marlow dossier
 
 > My final project for Product School's **Forward Deployed Engineering Certification**. One engagement, six files, a readout to a peer playing the sponsor, then a practical on a case issued in the room.
